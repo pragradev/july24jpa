@@ -1,0 +1,3 @@
+2024-11-05 21:02:15.306271-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "GENRE CHARACTER VARYING(5)": "'Comedy' (6)"; SQL statement:
+insert into cinema (genre,cinema_name,release_year,movie_id) values (?,?,?,?) [22001-224]

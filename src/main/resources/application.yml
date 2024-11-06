@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: july24JPA
+  datasource:
+    url: jdbc:h2:./movieDb
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+
+
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+
+
+server:
+  port: 8086
+
