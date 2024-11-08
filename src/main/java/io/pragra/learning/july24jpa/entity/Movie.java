@@ -4,24 +4,26 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import org.springframework.validation.annotation.Validated;
+
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @Table(name = "CINEMA")
 public class Movie {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer movieId;
-    @Column(name = "CINEMA_NAME", unique = true, nullable = false)
-    private String movieName;
+
+    @EmbeddedId
+    private MovieEmbdId movieEmbdId;
+
     @NonNull
     @Column(name = "GENRE",length = 5)
     private String genre;
 
-    private String releaseYear;
 
     @OneToOne
     private Review review;
+
+    @OneToMany
+    private List<CastDetail> castDetails; // NF 1 -6
 }

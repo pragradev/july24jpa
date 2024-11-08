@@ -1,14 +1,14 @@
 package io.pragra.learning.july24jpa.service;
 
 import io.pragra.learning.july24jpa.entity.Movie;
+import io.pragra.learning.july24jpa.entity.MovieEmbdId;
+import io.pragra.learning.july24jpa.repo.CastRepo;
 import io.pragra.learning.july24jpa.repo.MovieRepo;
 import io.pragra.learning.july24jpa.repo.ReviewRepo;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,8 +17,10 @@ public class MovieService {
 
     final MovieRepo movieRepo;
     final ReviewRepo reviewRepo;
+    final CastRepo castRepo;
 
     public Movie insertMovie(Movie movie){
+        castRepo.saveAll(movie.getCastDetails());
         reviewRepo.save(movie.getReview());
         // insert into database
         return movieRepo.save(movie);
@@ -30,19 +32,21 @@ public class MovieService {
         return movieRepo.findAll();
     }
 
-    public Optional<Movie> getMovieById(Integer id){
+    public Optional<Movie> getMovieById(MovieEmbdId id){
         return movieRepo.findById(id);
     }
 
     public Movie updateMovie(Movie movie){
-        Optional<Movie> movieById = getMovieById(movie.getMovieId());
+        Optional<Movie> movieById = getMovieById(movie.getMovieEmbdId());
         if(movieById.isPresent()){
             movieRepo.save(movie);
         }
+
         return movie;
     }
 
     public List<Movie> saveAll(List<Movie> movies){
+        movies.stream().forEach(m -> castRepo.saveAll(m.getCastDetails()));
         reviewRepo.saveAll(movies.stream()
                 .map(m -> m.getReview())
                 .collect(Collectors.toList()));

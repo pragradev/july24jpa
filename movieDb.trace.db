@@ -1,3 +1,88 @@
 2024-11-05 21:02:15.306271-05:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Value too long for column "GENRE CHARACTER VARYING(5)": "'Comedy' (6)"; SQL statement:
 insert into cinema (genre,cinema_name,release_year,movie_id) values (?,?,?,?) [22001-224]
+2024-11-05 22:55:06.437718-05:00 jdbc[325]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-224]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:218)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:135)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:733)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 16 more
+2024-11-07 20:54:57.136431-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "drop table if exists [*]cast cascade "; expected "identifier"; SQL statement:
+drop table if exists cast cascade  [42001-224]
+2024-11-07 20:54:57.144570-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]cast (cast_id integer not null, first_name varchar(255), last_name varchar(255), primary key (cast_id))"; expected "identifier"; SQL statement:
+create table cast (cast_id integer not null, first_name varchar(255), last_name varchar(255), primary key (cast_id)) [42001-224]
+2024-11-07 20:54:57.145699-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table cinema (genre varchar(5), review_review_id bigint unique, movie_name varchar(255) not null, [*]year varchar(255) not null, primary key (movie_name, year))"; expected "identifier"; SQL statement:
+create table cinema (genre varchar(5), review_review_id bigint unique, movie_name varchar(255) not null, year varchar(255) not null, primary key (movie_name, year)) [42001-224]
+2024-11-07 20:54:57.147710-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table if exists cinema_casts add constraint FK15xvgyuy30n8oalurpj25grr7 foreign key (casts_cast_id) references [*]cast"; expected "identifier"; SQL statement:
+alter table if exists cinema_casts add constraint FK15xvgyuy30n8oalurpj25grr7 foreign key (casts_cast_id) references cast [42001-224]
+2024-11-07 20:54:57.148243-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CINEMA" not found; SQL statement:
+alter table if exists cinema_casts add constraint FKth9bkwag4s623v6nyg99df1lp foreign key (movie_movie_name, movie_year) references cinema [42102-224]
+2024-11-07 20:55:56.229599-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]cast (cast_id integer not null, first_name varchar(255), last_name varchar(255), primary key (cast_id))"; expected "identifier"; SQL statement:
+create table cast (cast_id integer not null, first_name varchar(255), last_name varchar(255), primary key (cast_id)) [42001-224]
+2024-11-07 20:55:56.232195-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table cinema (movie_name varchar(255) not null, [*]year varchar(255) not null, genre varchar(5), review_review_id bigint, primary key (movie_name, year))"; expected "identifier"; SQL statement:
+create table cinema (movie_name varchar(255) not null, year varchar(255) not null, genre varchar(5), review_review_id bigint, primary key (movie_name, year)) [42001-224]
+2024-11-07 20:55:56.233506-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table if exists cinema_casts add constraint FK15xvgyuy30n8oalurpj25grr7 foreign key (casts_cast_id) references [*]cast"; expected "identifier"; SQL statement:
+alter table if exists cinema_casts add constraint FK15xvgyuy30n8oalurpj25grr7 foreign key (casts_cast_id) references cast [42001-224]
+2024-11-07 20:55:56.234080-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CINEMA" not found; SQL statement:
+alter table if exists cinema_casts add constraint FKth9bkwag4s623v6nyg99df1lp foreign key (movie_movie_name, movie_year) references cinema [42102-224]
+2024-11-07 20:56:05.361510-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]cast (cast_id integer not null, first_name varchar(255), last_name varchar(255), primary key (cast_id))"; expected "identifier"; SQL statement:
+create table cast (cast_id integer not null, first_name varchar(255), last_name varchar(255), primary key (cast_id)) [42001-224]
+2024-11-07 20:56:05.364072-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table cinema (movie_name varchar(255) not null, [*]year varchar(255) not null, genre varchar(5), review_review_id bigint, primary key (movie_name, year))"; expected "identifier"; SQL statement:
+create table cinema (movie_name varchar(255) not null, year varchar(255) not null, genre varchar(5), review_review_id bigint, primary key (movie_name, year)) [42001-224]
+2024-11-07 20:56:05.365467-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table if exists cinema_casts add constraint FK15xvgyuy30n8oalurpj25grr7 foreign key (casts_cast_id) references [*]cast"; expected "identifier"; SQL statement:
+alter table if exists cinema_casts add constraint FK15xvgyuy30n8oalurpj25grr7 foreign key (casts_cast_id) references cast [42001-224]
+2024-11-07 20:56:05.366055-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CINEMA" not found; SQL statement:
+alter table if exists cinema_casts add constraint FKth9bkwag4s623v6nyg99df1lp foreign key (movie_movie_name, movie_year) references cinema [42102-224]
+2024-11-07 20:56:21.949140-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "drop table if exists [*]cast cascade "; expected "identifier"; SQL statement:
+drop table if exists cast cascade  [42001-224]
+2024-11-07 20:56:21.954879-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]cast (cast_id integer not null, first_name varchar(255), last_name varchar(255), primary key (cast_id))"; expected "identifier"; SQL statement:
+create table cast (cast_id integer not null, first_name varchar(255), last_name varchar(255), primary key (cast_id)) [42001-224]
+2024-11-07 20:56:21.955720-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table cinema (genre varchar(5), review_review_id bigint unique, movie_name varchar(255) not null, [*]year varchar(255) not null, primary key (movie_name, year))"; expected "identifier"; SQL statement:
+create table cinema (genre varchar(5), review_review_id bigint unique, movie_name varchar(255) not null, year varchar(255) not null, primary key (movie_name, year)) [42001-224]
+2024-11-07 20:56:21.957363-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table if exists cinema_casts add constraint FK15xvgyuy30n8oalurpj25grr7 foreign key (casts_cast_id) references [*]cast"; expected "identifier"; SQL statement:
+alter table if exists cinema_casts add constraint FK15xvgyuy30n8oalurpj25grr7 foreign key (casts_cast_id) references cast [42001-224]
+2024-11-07 20:56:21.957935-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CINEMA" not found; SQL statement:
+alter table if exists cinema_casts add constraint FKth9bkwag4s623v6nyg99df1lp foreign key (movie_movie_name, movie_year) references cinema [42102-224]
+2024-11-07 20:58:10.452514-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "drop table if exists [*]cast cascade "; expected "identifier"; SQL statement:
+drop table if exists cast cascade  [42001-224]
+2024-11-07 20:58:13.487066-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table cinema (genre varchar(5), review_review_id bigint unique, movie_name varchar(255) not null, [*]year varchar(255) not null, primary key (movie_name, year))"; expected "identifier"; SQL statement:
+create table cinema (genre varchar(5), review_review_id bigint unique, movie_name varchar(255) not null, year varchar(255) not null, primary key (movie_name, year)) [42001-224]
+2024-11-07 20:58:13.492677-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CINEMA" not found; SQL statement:
+alter table if exists cinema_cast_details add constraint FKh22hmfn08x5pcciv61fcraqm4 foreign key (movie_movie_name, movie_year) references cinema [42102-224]
