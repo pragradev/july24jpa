@@ -38,7 +38,7 @@ public class MovieController {
     }
 
     @PostMapping("/byid")
-    public Optional<Movie> byId(@RequestBody MovieEmbdId identifier){
+    public Optional<Movie> byId(@RequestBody Long identifier){
         return service.getMovieById(identifier);
     }
 
@@ -50,5 +50,10 @@ public class MovieController {
     @PostMapping("/all")
     public List<Movie> addAll(@RequestBody List<Movie> movies){
         return service.saveAll(movies);
+    }
+
+    @GetMapping("/byName")
+    public List<Movie> getMovieByName(@RequestParam String movieName){
+        return service.getMoviesByMovieName(movieName);
     }
 }

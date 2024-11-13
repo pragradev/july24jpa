@@ -13,8 +13,13 @@ import java.util.List;
 @Table(name = "CINEMA")
 public class Movie {
 
-    @EmbeddedId
-    private MovieEmbdId movieEmbdId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long movieId;
+
+    private String movieName;
+
+    private String releaseYear;
 
     @NonNull
     @Column(name = "GENRE",length = 5)

@@ -1,8 +1,6 @@
 package io.pragra.learning.july24jpa.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,9 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class CastDetail {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer castId;
     private String firstName;
     private String lastName;
-    @ManyToOne
-    private Movie movie;
 }

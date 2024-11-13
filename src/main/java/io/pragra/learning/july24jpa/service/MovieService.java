@@ -6,7 +6,10 @@ import io.pragra.learning.july24jpa.repo.CastRepo;
 import io.pragra.learning.july24jpa.repo.MovieRepo;
 import io.pragra.learning.july24jpa.repo.ReviewRepo;
 import lombok.Data;
+import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -32,12 +35,12 @@ public class MovieService {
         return movieRepo.findAll();
     }
 
-    public Optional<Movie> getMovieById(MovieEmbdId id){
+    public Optional<Movie> getMovieById(Long id){
         return movieRepo.findById(id);
     }
 
     public Movie updateMovie(Movie movie){
-        Optional<Movie> movieById = getMovieById(movie.getMovieEmbdId());
+        Optional<Movie> movieById = getMovieById(movie.getMovieId());
         if(movieById.isPresent()){
             movieRepo.save(movie);
         }
@@ -51,6 +54,11 @@ public class MovieService {
                 .map(m -> m.getReview())
                 .collect(Collectors.toList()));
         return movieRepo.saveAll(movies);
+    }
+
+    @Transactional
+    public List<Movie> getMoviesByMovieName(String movieName){
+        return movieRepo.getbyname(movieName);
     }
 
 

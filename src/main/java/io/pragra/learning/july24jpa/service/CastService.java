@@ -15,7 +15,6 @@ public class CastService {
     private MovieRepo movieRepo;
 
     public CastDetail persistCasts(CastDetail castDetail){
-        movieRepo.save(castDetail.getMovie());
         return castRepo.save(castDetail);
     }
 
