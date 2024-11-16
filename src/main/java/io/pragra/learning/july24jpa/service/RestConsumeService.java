@@ -1,5 +1,6 @@
 package io.pragra.learning.july24jpa.service;
 
+import io.pragra.learning.july24jpa.GitUserConsumer;
 import io.pragra.learning.july24jpa.dto.GitUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,17 +15,23 @@ public class RestConsumeService {
     RestTemplate restTemplate;
     @Autowired
     WebClient webClient;
+    @Autowired
+    GitUserConsumer gitUserConsumer;
 
 //    public GitUser consumeGitHub(String username){
 //        return restTemplate.getForObject("https://api.github.com/users/"+username, GitUser.class );
 //    }
 
+//    public GitUser consumeGitHub(String username){
+//        return webClient.get()
+//                .uri("https://api.github.com/users/"+username)
+//                .retrieve()
+//                .bodyToMono(GitUser.class)
+//                .timeout(Duration.ofMillis(10000))
+//                .block();
+//    }
+
     public GitUser consumeGitHub(String username){
-        return webClient.get()
-                .uri("https://api.github.com/users/"+username)
-                .retrieve()
-                .bodyToMono(GitUser.class)
-                .timeout(Duration.ofMillis(10000))
-                .block();
+        return gitUserConsumer.getDataFromGithub(username);
     }
 }

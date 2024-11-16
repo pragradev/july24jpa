@@ -9,6 +9,8 @@ ReachJS -> AXIOS (Http Client) framework
 -> (Http clients) : Rest Template
 
 spring reactive framework:-> WebClient 
+Feign Client (Netflix) 
+
 Async:-> 
 sync:-> 
 
